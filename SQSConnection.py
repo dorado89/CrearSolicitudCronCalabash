@@ -57,7 +57,7 @@ class SQSConnection:
                 self.exists = False
 
         except Exception as e:
-            print(e)
+            pass
         
 
     def delete(self):
@@ -81,7 +81,7 @@ class SQSConnection:
             print('Error Cargando SQS')
 
     def __exit__(self, exc_type, exc_val, exc_tb):
-        print("SQS Terminada exit")
+        pass
 
     def send(self, data):
         try:

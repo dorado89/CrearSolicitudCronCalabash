@@ -8,11 +8,10 @@ from threading import Thread
 
 
 def execute_test(script):
-    print('Se ejecuta la prueba')
     txt = script
 
-    output = subprocess.call(['calabash-android', 'resign', './test.apk'])
-    output = subprocess.call(['calabash-android','run', './test.apk'])
+    output = subprocess.call(['calabash-android', 'resign', './Calendula-ciDebug-2.5.11.apk'])
+    output = subprocess.call(['calabash-android','run', './Calendula-ciDebug-2.5.11.apk'])
     if output < 0:
         print('error en ejecución de prueba')
 
@@ -38,5 +37,4 @@ if __name__ == '__main__':
     while True:
         Thread(target=process).start()
         st = str(datetime.datetime.now())
-        print(st + ' : alive')
         sleep(Settings.SLEEP_TIME)
