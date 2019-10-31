@@ -1,0 +1,20 @@
+{
+  "name": "CrearSolicitudCronCypress",
+  "version": "1.0.0",
+  "description": "Django",
+  "main": "test.js",
+  "scripts": {
+    "test": "cd ../Cypress && npm run cy:run"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/jmartipu/CrearSolicitudCronCypress.git"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/jmartipu/CrearSolicitudCronCypress/issues"
+  },
+  "homepage": "https://github.com/jmartipu/CrearSolicitudCronCypress#readme"
+}
