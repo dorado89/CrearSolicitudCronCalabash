@@ -11,7 +11,8 @@ def execute_test(script):
     print('Se ejecuta la prueba')
     txt = script
 
-    output = subprocess.call(['calabash-android','run', 'test.apk'])
+    output = subprocess.call(['calabash-android', 'resign', './test.apk'])
+    output = subprocess.call(['calabash-android','run', './test.apk'])
     if output < 0:
         print('error en ejecución de prueba')
 
@@ -25,7 +26,7 @@ def process():
                 message_body = sqs_connection.message.get('Body')
                 msg = json.loads(message_body)
                 #Aqui va la conversion del json
-                script = msg['description']
+                script = msg['descripcion']
                 sqs_connection.delete()
                 execute_test(script)
 
