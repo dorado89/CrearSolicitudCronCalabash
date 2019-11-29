@@ -4,7 +4,6 @@ import Settings
 import json
 import subprocess
 from SQSConnection import SQSConnection
-from threading import Thread
 
 
 def execute_test(script,urlapk):
@@ -43,6 +42,6 @@ def process():
 
 if __name__ == '__main__':
     while True:
-        Thread(target=process).start()
+        process()
         st = str(datetime.datetime.now())
         sleep(Settings.SLEEP_TIME)
