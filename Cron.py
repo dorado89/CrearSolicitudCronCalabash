@@ -31,10 +31,14 @@ def process():
             if sqs_connection.message is not '':
                 message_body = sqs_connection.message.get('Body')
                 msg = json.loads(message_body)
-                #Aqui va la conversion del json
-                script = msg['descripcion']
-                sqs_connection.delete()
-                execute_test(script)
+                listapruebas = msg[0]["fields"]["pruebas"]
+                script=""
+                urlapk=""
+                for prueba in listapruebas:
+                    script=prueba["script"]
+                    urlapk=prueba["url_apk"]
+                # sqs_connection.delete()
+                execute_test(script,urlapk)
 
     except Exception as e:
         print(e)
