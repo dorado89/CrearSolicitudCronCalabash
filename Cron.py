@@ -10,15 +10,14 @@ def execute_test(script,urlapk):
     subprocess.Popen([format(Settings.ANDROID_HOME) + "/emulator/emulator", '-avd', 'Pixel_2_API_28'])
     subprocess.run(['wget', '-N', urlapk])
     subprocess.run(['wget', '-N', script])
-    subprocess.run(['calabash-android', 'gen'])
     subprocess.run(['unzip', './'+script.rsplit('/',1)[-1], '-d','./features/'])
     subprocess.run(['calabash-android', 'resign', './'+urlapk.rsplit('/',1)[-1]])
     sleep(500)
     output = subprocess.call(['calabash-android','run', './'+urlapk.rsplit('/',1)[-1]])
     subprocess.run([format(Settings.ANDROID_HOME) + "/platform-tools/adb", 'shell', 'reboot', '-p'])
     sleep(500)
-    subprocess.run([format(Settings.ANDROID_HOME) + "/emulator/emulator", '-wipe-data', 'Pixel_2_API_28'])
-    subprocess.run(['rm', '-R','features'])
+    subprocess.run([format(Settings.ANDROID_HOME) + "/emulator/emulator", '-avd', 'Pixel_2_API_28','-wipe-data'])
+    subprocess.run(['find', '.','-name','"*.feature"','-type','f','-delete'])
     if output < 0:
         print('error en ejecución de prueba')
 
